@@ -1,0 +1,852 @@
+[
+  {
+    "category": "চাল",
+    "productName": "মিনিকেট",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌾",
+    "status": "active"
+  },
+  {
+    "category": "চাল",
+    "productName": "নাজিরশাইল",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌾",
+    "status": "active"
+  },
+  {
+    "category": "চাল",
+    "productName": "আটাশ",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌾",
+    "status": "active"
+  },
+  {
+    "category": "চাল",
+    "productName": "বাসমতি",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌾",
+    "status": "active"
+  },
+  {
+    "category": "চাল",
+    "productName": "কালিজিরা",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌾",
+    "status": "active"
+  },
+  {
+    "category": "ডাল",
+    "productName": "মসুর",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🫘",
+    "status": "active"
+  },
+  {
+    "category": "ডাল",
+    "productName": "মুগ",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🫘",
+    "status": "active"
+  },
+  {
+    "category": "ডাল",
+    "productName": "ছোলা",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🫘",
+    "status": "active"
+  },
+  {
+    "category": "ডাল",
+    "productName": "বুট",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🫘",
+    "status": "active"
+  },
+  {
+    "category": "ডাল",
+    "productName": "খেসারি",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🫘",
+    "status": "active"
+  },
+  {
+    "category": "তেল",
+    "productName": "সয়াবিন",
+    "packSize": "",
+    "saleUnit": "লিটার",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🛢️",
+    "status": "active"
+  },
+  {
+    "category": "তেল",
+    "productName": "সরিষা",
+    "packSize": "",
+    "saleUnit": "লিটার",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🛢️",
+    "status": "active"
+  },
+  {
+    "category": "তেল",
+    "productName": "সূর্যমুখী",
+    "packSize": "",
+    "saleUnit": "লিটার",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🛢️",
+    "status": "active"
+  },
+  {
+    "category": "তেল",
+    "productName": "রাইস ব্র্যান",
+    "packSize": "",
+    "saleUnit": "লিটার",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🛢️",
+    "status": "active"
+  },
+  {
+    "category": "তেল",
+    "productName": "অলিভ",
+    "packSize": "",
+    "saleUnit": "লিটার",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🛢️",
+    "status": "active"
+  },
+  {
+    "category": "মসলা",
+    "productName": "হলুদ",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌶️",
+    "status": "active"
+  },
+  {
+    "category": "মসলা",
+    "productName": "মরিচ",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌶️",
+    "status": "active"
+  },
+  {
+    "category": "মসলা",
+    "productName": "জিরা",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌶️",
+    "status": "active"
+  },
+  {
+    "category": "মসলা",
+    "productName": "ধনিয়া",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌶️",
+    "status": "active"
+  },
+  {
+    "category": "মসলা",
+    "productName": "গরম মসলা",
+    "packSize": "",
+    "saleUnit": "কেজি",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🌶️",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "টোস্ট (Olympic)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "টোস্ট (PRAN)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "টোস্ট (Britannia)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ক্রিম (Olympic)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ক্রিম (PRAN)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ক্রিম (Britannia)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "মারি (Olympic)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "মারি (PRAN)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "মারি (Britannia)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ডাইজেস্টিভ (Olympic)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ডাইজেস্টিভ (PRAN)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "ডাইজেস্টিভ (Britannia)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "বাটার (Olympic)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "বাটার (PRAN)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "বিস্কুট",
+    "productName": "বাটার (Britannia)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🍪",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "মিনারেল পানি (Mum)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "মিনারেল পানি (Coca-Cola)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "মিনারেল পানি (Mojo)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কোলা (Mum)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কোলা (Coca-Cola)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কোলা (Mojo)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কমলা (Mum)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কমলা (Coca-Cola)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "কমলা (Mojo)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "লেবু (Mum)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "লেবু (Coca-Cola)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "লেবু (Mojo)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "জুস (Mum)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "জুস (Coca-Cola)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পানীয়",
+    "productName": "জুস (Mojo)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🥤",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "সাবান (Lux)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "সাবান (Sunsilk)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "সাবান (Closeup)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "সাবান (Meril)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "শ্যাম্পু (Lux)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "শ্যাম্পু (Sunsilk)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "শ্যাম্পু (Closeup)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "শ্যাম্পু (Meril)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথপেস্ট (Lux)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথপেস্ট (Sunsilk)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথপেস্ট (Closeup)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথপেস্ট (Meril)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথব্রাশ (Lux)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথব্রাশ (Sunsilk)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথব্রাশ (Closeup)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "টুথব্রাশ (Meril)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "হ্যান্ডওয়াশ (Lux)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "হ্যান্ডওয়াশ (Sunsilk)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "হ্যান্ডওয়াশ (Closeup)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "পরিচর্যা",
+    "productName": "হ্যান্ডওয়াশ (Meril)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧴",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিটারজেন্ট (Wheel)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিটারজেন্ট (Vim)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিটারজেন্ট (ACI)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিশওয়াশ (Wheel)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিশওয়াশ (Vim)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ডিশওয়াশ (ACI)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ফ্লোর ক্লিনার (Wheel)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ফ্লোর ক্লিনার (Vim)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ফ্লোর ক্লিনার (ACI)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ব্লিচ (Wheel)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ব্লিচ (Vim)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "ব্লিচ (ACI)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "টিস্যু (Wheel)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "টিস্যু (Vim)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  },
+  {
+    "category": "হোম কেয়ার",
+    "productName": "টিস্যু (ACI)",
+    "packSize": "",
+    "saleUnit": "পিস",
+    "price": 0,
+    "stock": 20,
+    "emoji": "🧼",
+    "status": "active"
+  }
+]
