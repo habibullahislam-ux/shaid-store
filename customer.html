@@ -64,19 +64,30 @@
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:14px 16px 20px;}
   @media(min-width:640px){ .grid{grid-template-columns:repeat(4,1fr); max-width:900px; margin:0 auto;} .cat-scroll,.search-wrap{max-width:900px; margin:0 auto;} }
   .card{background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; position:relative; box-shadow:0 2px 6px rgba(38,34,32,0.05);}
-  .card-img{height:100px; display:flex; align-items:center; justify-content:center; font-size:38px; background:var(--paper-2); position:relative;}
+  .card-img{height:90px; display:flex; align-items:center; justify-content:center; font-size:34px; background:var(--paper-2); position:relative;}
   .stock-tag{position:absolute; top:8px; left:8px; font-size:10px; background:var(--green-deep); color:var(--paper); padding:3px 8px; border-radius:20px; font-weight:600;}
   .stock-tag.low{background:var(--brick);}
   .stock-tag.out{background:#999;}
   .card-body{padding:10px 12px 12px;}
-  .card-name{font-size:14.5px; font-weight:600; line-height:1.3;}
-  .card-brand{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
-  .card-row{display:flex; justify-content:space-between; align-items:center; margin-top:9px;}
-  .card-price{font-weight:700; font-size:15px; color:var(--green-deep);}
+  .card-name{font-size:14px; font-weight:600; line-height:1.3;}
+  .card-brand{font-size:11px; color:var(--ink-soft); margin-top:2px;}
+  .card-price{font-weight:700; font-size:14.5px; color:var(--green-deep); margin-top:7px;}
+  .card-price small{font-size:11px; font-weight:500; color:var(--ink-soft);}
+
+  /* piece-based stepper */
   .qty-btn{width:28px; height:28px; border-radius:8px; border:none; background:var(--turmeric); color:#3a2a06; font-size:16px; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center;}
   .qty-btn:disabled{opacity:0.35; cursor:not-allowed;}
-  .qty-wrap{display:flex; align-items:center; gap:8px; background:var(--paper-2); border-radius:10px; padding:3px;}
+  .qty-wrap{display:flex; align-items:center; gap:8px; background:var(--paper-2); border-radius:10px; padding:3px; margin-top:8px; justify-content:space-between;}
   .qty-wrap .count{font-size:14px; font-weight:700; min-width:16px; text-align:center;}
+
+  /* weight-based input */
+  .weight-row{display:flex; gap:6px; margin-top:8px;}
+  .weight-input{width:100%; padding:8px 8px; border-radius:8px; border:1.5px solid var(--line); font-size:13px; font-family:inherit;}
+  .weight-add-btn{padding:8px 10px; border-radius:8px; border:none; background:var(--turmeric); color:#3a2a06; font-weight:700; font-size:12.5px; cursor:pointer; white-space:nowrap;}
+  .weight-add-btn:disabled{opacity:0.4;}
+  .weight-hint{font-size:10.5px; color:var(--ink-soft); margin-top:3px;}
+  .weight-cart-line{display:flex; justify-content:space-between; align-items:center; margin-top:7px; background:var(--paper-2); border-radius:8px; padding:6px 9px; font-size:12px; font-weight:600; color:var(--green-deep);}
+  .weight-cart-line .remove-x{color:var(--brick); font-weight:800; cursor:pointer; padding:0 4px;}
 
   .empty-state{grid-column:1/-1; text-align:center; padding:40px 20px; color:var(--ink-soft);}
 
@@ -99,8 +110,8 @@
   .summary-row.total{font-weight:700; font-size:16px; border-top:1.5px solid var(--line); margin-top:6px; padding-top:12px;}
   .pay-section{margin-top:16px;}
   .pay-label{font-size:13px; font-weight:700; color:var(--ink-soft); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;}
-  .pay-options{display:flex; gap:8px; margin-bottom:12px;}
-  .pay-opt{flex:1; text-align:center; padding:10px 6px; border:1.5px solid var(--line); border-radius:10px; font-size:13px; font-weight:600; color:var(--ink-soft); background:#fff; cursor:pointer;}
+  .pay-options{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
+  .pay-opt{flex:1 1 calc(50% - 4px); text-align:center; padding:10px 6px; border:1.5px solid var(--line); border-radius:10px; font-size:12.5px; font-weight:600; color:var(--ink-soft); background:#fff; cursor:pointer;}
   .pay-opt.active{border-color:var(--brick); color:var(--brick); background:#FBEEEA;}
   .pay-number{background:#fff; border:1.5px dashed var(--brick); border-radius:10px; padding:10px 12px; font-size:13.5px; margin-bottom:12px;}
   .pay-number b{color:var(--brick);}
@@ -160,7 +171,7 @@
       <div id="itemsList"></div>
 
       <div class="summary-row"><span>মোট পণ্যের দাম</span><span id="sumSubtotal">৳ ০</span></div>
-      <div class="summary-row"><span>ডেলিভারি চার্জ</span><span>৳ ৩০</span></div>
+      <div class="summary-row"><span>ডেলিভারি চার্জ</span><span style="color:var(--green-deep); font-weight:700;">ফ্রি 🎉</span></div>
       <div class="summary-row total"><span>সর্বমোট</span><span id="sumTotal">৳ ০</span></div>
 
       <div class="pay-section">
@@ -169,8 +180,9 @@
           <div class="pay-opt active" data-pay="bkash" data-num="01712-345678">বিকাশ</div>
           <div class="pay-opt" data-pay="nagad" data-num="01812-345678">নগদ</div>
           <div class="pay-opt" data-pay="rocket" data-num="01912-345678 (R)">রকেট</div>
+          <div class="pay-opt" data-pay="cod" data-num="">ক্যাশ অন ডেলিভারি</div>
         </div>
-        <div class="pay-number">সেন্ড মানি করুন এই নম্বরে: <b id="payNumber">01712-345678</b> (পার্সোনাল)</div>
+        <div class="pay-number" id="payNumberBox">সেন্ড মানি করুন এই নম্বরে: <b id="payNumber">01712-345678</b> (পার্সোনাল)</div>
 
         <div class="field-label">আপনার নাম</div>
         <input type="text" id="custName" placeholder="যেমন: করিম উদ্দিন">
@@ -178,7 +190,7 @@
         <input type="text" id="custAddress" placeholder="গ্রাম/মহল্লা, বাড়ি নং">
         <div class="field-label">ফোন নম্বর</div>
         <input type="text" id="custPhone" placeholder="01xxxxxxxxx">
-        <div class="field-label">ট্রানজেকশন আইডি</div>
+        <div class="field-label" id="txnLabel">ট্রানজেকশন আইডি</div>
         <input type="text" id="custTxn" placeholder="পেমেন্ট করার পর যে আইডি পেয়েছেন">
         <div class="error-text" id="formError">সব ঘর পূরণ করুন</div>
       </div>
@@ -196,15 +208,41 @@
     <button class="close-success" onclick="location.reload()">নতুন অর্ডার করুন</button>
   </div>
 
-<!-- Firebase SDK (compat, no build step needed) -->
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
 
 <script>
 let products = [];
+// state[id] = { qty, unit } -- for কেজি/লিটার: qty is in গ্রাম/মিলি (base sub-unit). for পিস: qty is count.
 const state = {};
 let activeCat = "সব";
+
+// sub-unit + conversion helpers
+function subUnitOf(saleUnit){
+  if(saleUnit === 'কেজি') return 'গ্রাম';
+  if(saleUnit === 'লিটার') return 'মিলি';
+  return null; // পিস has no sub-unit
+}
+function stockInSubUnit(p){
+  // stock is stored in কেজি/লিটার/পিস as-is; convert to sub-unit for weighable items
+  if(p.saleUnit === 'পিস') return p.stock;
+  return p.stock * 1000;
+}
+function lineTotal(p, qty){
+  if(p.saleUnit === 'পিস') return p.price * qty;
+  return Math.round(p.price * (qty/1000));
+}
+function friendlyQty(saleUnit, qty){
+  if(saleUnit === 'পিস') return `${qty} পিস`;
+  const base = saleUnit === 'কেজি' ? 'কেজি' : 'লিটার';
+  const sub = saleUnit === 'কেজি' ? 'গ্রাম' : 'মিলি';
+  if(qty >= 1000){
+    const val = qty/1000;
+    return `${val % 1 === 0 ? val : val.toFixed(2)} ${base}`;
+  }
+  return `${qty} ${sub}`;
+}
 
 function renderCategories(){
   const cats = ["সব", ...new Set(products.map(p=>p.category))];
@@ -218,8 +256,8 @@ function currentFiltered(){
   const term = document.getElementById('searchBox').value.trim().toLowerCase();
   return products.filter(p=>{
     const catMatch = activeCat === "সব" || p.category === activeCat;
-    const searchMatch = !term || p.productName.toLowerCase().includes(term) || p.brand.toLowerCase().includes(term);
-    return catMatch && searchMatch && p.status !== 'inactive';
+    const searchMatch = !term || p.productName.toLowerCase().includes(term) || (p.brand||'').toLowerCase().includes(term);
+    return catMatch && searchMatch && p.status !== 'inactive' && p.price > 0;
   });
 }
 
@@ -232,11 +270,37 @@ function render(){
     return;
   }
   grid.innerHTML = list.map(p=>{
-    const qty = state[p.id] || 0;
     const outOfStock = p.stock <= 0;
-    const low = p.stock > 0 && p.stock <= 5;
+    const low = p.saleUnit === 'পিস' ? (p.stock > 0 && p.stock <= 5) : (p.stock > 0 && p.stock <= 2);
     const stockLabel = outOfStock ? "স্টক নেই" : (low ? "কম আছে" : "আছে");
     const stockClass = outOfStock ? "out" : (low ? "low" : "");
+    const priceLine = p.saleUnit === 'পিস'
+      ? `৳ ${p.price} <small>/পিস</small>`
+      : `৳ ${p.price} <small>/${p.saleUnit}</small>`;
+
+    let interactionHtml = "";
+    if(p.saleUnit === 'পিস'){
+      const qty = (state[p.id] && state[p.id].qty) || 0;
+      interactionHtml = qty === 0
+        ? `<div class="qty-wrap"><span class="count" style="opacity:.4">যোগ করুন</span><button class="qty-btn" ${outOfStock?'disabled':''} onclick="addPiece('${p.id}')">+</button></div>`
+        : `<div class="qty-wrap">
+             <button class="qty-btn" onclick="removePiece('${p.id}')">−</button>
+             <span class="count">${qty}</span>
+             <button class="qty-btn" ${qty>=p.stock?'disabled':''} onclick="addPiece('${p.id}')">+</button>
+           </div>`;
+    } else {
+      const sub = subUnitOf(p.saleUnit);
+      const current = state[p.id];
+      interactionHtml = `
+        <div class="weight-row">
+          <input type="number" min="1" class="weight-input" id="input-${p.id}" placeholder="কত ${sub}?" ${outOfStock?'disabled':''}>
+          <button class="weight-add-btn" ${outOfStock?'disabled':''} onclick="addWeighted('${p.id}')">+ যোগ</button>
+        </div>
+        <div class="weight-hint">যেমন: ৫০ বা ৩০০ (${sub}-এ লিখুন)</div>
+        ${current ? `<div class="weight-cart-line"><span>কার্টে: ${friendlyQty(p.saleUnit, current.qty)}</span><span class="remove-x" onclick="removeWeighted('${p.id}')">✕</span></div>` : ''}
+      `;
+    }
+
     return `
       <div class="card">
         <div class="card-img">
@@ -245,49 +309,63 @@ function render(){
         </div>
         <div class="card-body">
           <div class="card-name">${p.productName}</div>
-          <div class="card-brand">${p.brand} • ${p.unit}</div>
-          <div class="card-row">
-            <div class="card-price">৳ ${p.price}</div>
-            ${qty === 0
-              ? `<button class="qty-btn" ${outOfStock?'disabled':''} onclick="addItem('${p.id}')">+</button>`
-              : `<div class="qty-wrap">
-                   <button class="qty-btn" onclick="removeItem('${p.id}')">−</button>
-                   <span class="count">${qty}</span>
-                   <button class="qty-btn" ${qty>=p.stock?'disabled':''} onclick="addItem('${p.id}')">+</button>
-                 </div>`
-            }
-          </div>
+          <div class="card-brand">${p.brand||''}</div>
+          <div class="card-price">${priceLine}</div>
+          ${interactionHtml}
         </div>
       </div>`;
   }).join('');
   updateCartBar();
 }
 
-function addItem(id){
+// ---- piece-based cart actions ----
+function addPiece(id){
   const p = products.find(x=>x.id===id);
-  const current = state[id] || 0;
+  const current = (state[id] && state[id].qty) || 0;
   if(current >= p.stock) return;
-  state[id] = current + 1;
+  state[id] = { qty: current + 1, unit: 'পিস' };
   render();
 }
-function removeItem(id){
+function removePiece(id){
   if(!state[id]) return;
-  state[id] -= 1;
-  if(state[id] <= 0) delete state[id];
+  state[id].qty -= 1;
+  if(state[id].qty <= 0) delete state[id];
+  render();
+}
+
+// ---- weight-based cart actions ----
+function addWeighted(id){
+  const p = products.find(x=>x.id===id);
+  const input = document.getElementById('input-'+id);
+  const val = Number(input.value);
+  if(!val || val <= 0) return;
+  const maxSub = stockInSubUnit(p);
+  const current = (state[id] && state[id].qty) || 0;
+  let newQty = current + val;
+  if(newQty > maxSub){
+    newQty = maxSub;
+    alert(`স্টকে আছে মাত্র ${friendlyQty(p.saleUnit, maxSub)}`);
+  }
+  state[id] = { qty: newQty, unit: p.saleUnit };
+  input.value = '';
+  render();
+}
+function removeWeighted(id){
+  delete state[id];
   render();
 }
 
 function updateCartBar(){
   const bar = document.getElementById('cartBar');
   const entries = Object.entries(state);
-  const totalItems = entries.reduce((s,[,q]) => s+q, 0);
-  const subtotal = entries.reduce((s,[id,q]) => {
+  const totalItems = entries.length;
+  const subtotal = entries.reduce((s,[id,item]) => {
     const p = products.find(x=>x.id===id);
-    return s + p.price*q;
+    return s + lineTotal(p, item.qty);
   }, 0);
   if(totalItems > 0){
     bar.classList.add('show');
-    document.getElementById('cartCount').innerText = `${totalItems} টি পণ্য`;
+    document.getElementById('cartCount').innerText = `${totalItems} ধরনের পণ্য`;
     document.getElementById('cartTotal').innerText = `৳ ${subtotal}`;
   } else {
     bar.classList.remove('show');
@@ -308,19 +386,19 @@ document.getElementById('overlay').addEventListener('click', (e)=>{ if(e.target.
 function openSheet(){
   const entries = Object.entries(state);
   const itemsList = document.getElementById('itemsList');
-  itemsList.innerHTML = entries.map(([id,q])=>{
+  itemsList.innerHTML = entries.map(([id,item])=>{
     const p = products.find(x=>x.id===id);
     return `<div class="line-item">
-      <div><div class="li-name">${p.productName}</div><div class="li-sub">${p.brand} • ${p.unit} × ${q}</div></div>
-      <div>৳ ${p.price*q}</div>
+      <div><div class="li-name">${p.productName}</div><div class="li-sub">${p.brand||''} • ${friendlyQty(p.saleUnit, item.qty)}</div></div>
+      <div>৳ ${lineTotal(p, item.qty)}</div>
     </div>`;
   }).join('');
-  const subtotal = entries.reduce((s,[id,q])=>{
+  const subtotal = entries.reduce((s,[id,item])=>{
     const p = products.find(x=>x.id===id);
-    return s + p.price*q;
+    return s + lineTotal(p, item.qty);
   }, 0);
   document.getElementById('sumSubtotal').innerText = `৳ ${subtotal}`;
-  document.getElementById('sumTotal').innerText = `৳ ${subtotal + 30}`;
+  document.getElementById('sumTotal').innerText = `৳ ${subtotal}`;
   document.getElementById('overlay').classList.add('show');
 }
 function closeSheet(){ document.getElementById('overlay').classList.remove('show'); }
@@ -330,7 +408,11 @@ document.getElementById('payOptions').addEventListener('click', (e)=>{
   if(!opt) return;
   document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('active'));
   opt.classList.add('active');
-  document.getElementById('payNumber').innerText = opt.dataset.num;
+  const isCod = opt.dataset.pay === 'cod';
+  document.getElementById('payNumberBox').style.display = isCod ? 'none' : 'block';
+  document.getElementById('txnLabel').style.display = isCod ? 'none' : 'block';
+  document.getElementById('custTxn').style.display = isCod ? 'none' : 'block';
+  if(!isCod) document.getElementById('payNumber').innerText = opt.dataset.num;
 });
 
 document.getElementById('confirmBtn').addEventListener('click', async ()=>{
@@ -339,8 +421,10 @@ document.getElementById('confirmBtn').addEventListener('click', async ()=>{
   const phone = document.getElementById('custPhone').value.trim();
   const txn = document.getElementById('custTxn').value.trim();
   const errorEl = document.getElementById('formError');
+  const payMethod = document.querySelector('.pay-opt.active').dataset.pay;
+  const isCod = payMethod === 'cod';
 
-  if(!name || !address || !phone || !txn){
+  if(!name || !address || !phone || (!isCod && !txn)){
     errorEl.style.display = 'block';
     return;
   }
@@ -349,13 +433,17 @@ document.getElementById('confirmBtn').addEventListener('click', async ()=>{
   const entries = Object.entries(state);
   if(entries.length === 0) return;
 
-  const items = entries.map(([id,q])=>{
+  const items = entries.map(([id,item])=>{
     const p = products.find(x=>x.id===id);
-    return { productId: p.id, productName: p.productName, brand: p.brand, unit: p.unit, price: p.price, qty: q };
+    return {
+      productId: p.id, productName: p.productName, brand: p.brand||'',
+      saleUnit: p.saleUnit, qty: item.qty, price: p.price,
+      displayQty: friendlyQty(p.saleUnit, item.qty),
+      lineTotal: lineTotal(p, item.qty)
+    };
   });
-  const subtotal = items.reduce((s,i)=> s + i.price*i.qty, 0);
-  const deliveryCharge = 30;
-  const payMethod = document.querySelector('.pay-opt.active').dataset.pay;
+  const subtotal = items.reduce((s,i)=> s + i.lineTotal, 0);
+  const deliveryCharge = 0;
 
   const btn = document.getElementById('confirmBtn');
   btn.disabled = true;
@@ -366,7 +454,7 @@ document.getElementById('confirmBtn').addEventListener('click', async ()=>{
       customerName: name,
       customerAddress: address,
       customerPhone: phone,
-      transactionId: txn,
+      transactionId: isCod ? 'ক্যাশ অন ডেলিভারি' : txn,
       paymentMethod: payMethod,
       items: items,
       subtotal: subtotal,
@@ -385,14 +473,13 @@ document.getElementById('confirmBtn').addEventListener('click', async ()=>{
   }
 });
 
-// ---- Load products from Firestore ----
 function loadProducts(){
   db.collection('products').where('status','==','active').get()
     .then(snapshot=>{
       products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       if(products.length === 0){
         document.getElementById('productGrid').innerHTML =
-          `<div class="empty-state">এখনো কোনো পণ্য যোগ করা হয়নি।<br>এডমিন প্যানেল থেকে সিড ডেটা ইম্পোর্ট করুন।</div>`;
+          `<div class="empty-state">এখনো কোনো পণ্য যোগ করা হয়নি বা দাম বসানো হয়নি।<br>এডমিন প্যানেল থেকে দাম বসান।</div>`;
         return;
       }
       renderCategories();
