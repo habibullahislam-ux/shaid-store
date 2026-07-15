@@ -146,6 +146,8 @@
 
   <div class="search-wrap">
     <input class="search-box" id="searchBox" type="text" placeholder="🔍 পণ্যের নাম লিখে খুঁজুন...">
+    <div id="accountLink" style="text-align:right; margin-top:8px; font-size:12.5px; font-weight:600; color:var(--green-deep); cursor:pointer;">👤 লগইন / রেজিস্ট্রেশন</div>
+    <div id="accountHint" style="text-align:right; font-size:10.5px; color:var(--ink-soft); margin-top:2px;">(ঐচ্ছিক — লগইন ছাড়াও সরাসরি অর্ডার করা যাবে)</div>
   </div>
 
   <div class="cat-scroll" id="catScroll">
@@ -206,6 +208,58 @@
     <div class="success-sub">দোকান মালিক আপনার পেমেন্ট যাচাই করে অর্ডার কনফার্ম করবেন। প্রয়োজনে দোকান থেকে ফোনে যোগাযোগ করা হবে।</div>
     <div class="success-id" id="orderIdDisplay">#ORD-0000</div>
     <button class="close-success" onclick="location.reload()">নতুন অর্ডার করুন</button>
+  </div>
+
+  <div class="overlay" id="accountOverlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+
+      <!-- Logged-out: login/register tabs -->
+      <div id="authSection">
+        <div style="display:flex; gap:8px; margin-bottom:16px;">
+          <div id="tabLogin" class="chip active" style="flex:1; text-align:center;">লগইন</div>
+          <div id="tabRegister" class="chip" style="flex:1; text-align:center;">রেজিস্ট্রেশন</div>
+        </div>
+
+        <div id="loginForm">
+          <div class="field-label">ফোন নম্বর</div>
+          <input type="text" id="loginPhone" placeholder="01xxxxxxxxx">
+          <div class="field-label">পাসওয়ার্ড</div>
+          <input type="text" id="loginPassword" placeholder="আপনার পাসওয়ার্ড">
+          <div class="error-text" id="loginError">ফোন নম্বর বা পাসওয়ার্ড ভুল</div>
+          <button class="confirm-btn" id="loginSubmitBtn">লগইন করুন</button>
+        </div>
+
+        <div id="registerForm" style="display:none;">
+          <div class="field-label">আপনার নাম</div>
+          <input type="text" id="regName" placeholder="যেমন: করিম উদ্দিন">
+          <div class="field-label">ফোন নম্বর</div>
+          <input type="text" id="regPhone" placeholder="01xxxxxxxxx">
+          <div class="field-label">ঠিকানা</div>
+          <input type="text" id="regAddress" placeholder="গ্রাম/মহল্লা, বাড়ি নং">
+          <div class="field-label">পাসওয়ার্ড</div>
+          <input type="text" id="regPassword" placeholder="একটা সহজ পাসওয়ার্ড দিন">
+          <div class="error-text" id="registerError">সব ঘর পূরণ করুন</div>
+          <button class="confirm-btn" id="registerSubmitBtn">রেজিস্ট্রেশন করুন</button>
+        </div>
+      </div>
+
+      <!-- Logged-in: profile -->
+      <div id="profileSection" style="display:none;">
+        <div class="sheet-title" id="profileName">-</div>
+        <div style="font-size:13px; color:var(--ink-soft); margin-bottom:16px;" id="profilePhone">-</div>
+        <button class="confirm-btn" id="viewOrdersBtn" style="margin-top:0;">📋 আমার অর্ডার দেখুন</button>
+        <button class="btn" id="logoutBtn" style="width:100%; margin-top:10px; background:var(--paper-2)">লগআউট</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="orderHistoryOverlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">আমার অর্ডার</div>
+      <div id="myOrdersResults"></div>
+    </div>
   </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
@@ -400,6 +454,7 @@ function openSheet(){
   }, 0);
   document.getElementById('sumSubtotal').innerText = `৳ ${subtotal}`;
   document.getElementById('sumTotal').innerText = `৳ ${subtotal}`;
+  if(!document.getElementById('custName').value) prefillFromSession();
   document.getElementById('overlay').classList.add('show');
 }
 function closeSheet(){ document.getElementById('overlay').classList.remove('show'); }
@@ -491,6 +546,208 @@ function loadProducts(){
         `<div class="empty-state">পণ্য লোড করা যায়নি।<br>Firebase কনফিগ ঠিক আছে কিনা দেখুন।<br><small>${err.message}</small></div>`;
     });
 }
+// ---------- CUSTOMER ACCOUNT (lightweight, phone+password based) ----------
+const SESSION_KEY = 'saeedStoreCustomerSession';
+
+function getSession(){
+  try{ return JSON.parse(localStorage.getItem(SESSION_KEY)); }catch(e){ return null; }
+}
+function setSession(obj){ localStorage.setItem(SESSION_KEY, JSON.stringify(obj)); }
+function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+
+function updateAccountUI(){
+  const session = getSession();
+  const link = document.getElementById('accountLink');
+  const hint = document.getElementById('accountHint');
+  if(session){
+    link.innerText = `👤 ${session.name}`;
+    hint.style.display = 'none';
+  } else {
+    link.innerText = `👤 লগইন / রেজিস্ট্রেশন`;
+    hint.style.display = 'block';
+  }
+}
+updateAccountUI();
+
+document.getElementById('accountLink').addEventListener('click', ()=>{
+  const session = getSession();
+  if(session){
+    document.getElementById('authSection').style.display = 'none';
+    document.getElementById('profileSection').style.display = 'block';
+    document.getElementById('profileName').innerText = session.name;
+    document.getElementById('profilePhone').innerText = session.phone;
+  } else {
+    document.getElementById('authSection').style.display = 'block';
+    document.getElementById('profileSection').style.display = 'none';
+  }
+  document.getElementById('accountOverlay').classList.add('show');
+});
+document.getElementById('accountOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'accountOverlay') document.getElementById('accountOverlay').classList.remove('show');
+});
+document.getElementById('orderHistoryOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'orderHistoryOverlay') document.getElementById('orderHistoryOverlay').classList.remove('show');
+});
+
+document.getElementById('tabLogin').addEventListener('click', ()=>{
+  document.getElementById('tabLogin').classList.add('active');
+  document.getElementById('tabRegister').classList.remove('active');
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('registerForm').style.display = 'none';
+});
+document.getElementById('tabRegister').addEventListener('click', ()=>{
+  document.getElementById('tabRegister').classList.add('active');
+  document.getElementById('tabLogin').classList.remove('active');
+  document.getElementById('registerForm').style.display = 'block';
+  document.getElementById('loginForm').style.display = 'none';
+});
+
+document.getElementById('registerSubmitBtn').addEventListener('click', async ()=>{
+  const name = document.getElementById('regName').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const address = document.getElementById('regAddress').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const errEl = document.getElementById('registerError');
+
+  if(!name || !phone || !address || !password){
+    errEl.innerText = 'সব ঘর পূরণ করুন';
+    errEl.style.display = 'block';
+    return;
+  }
+  const btn = document.getElementById('registerSubmitBtn');
+  btn.disabled = true; btn.innerText = 'রেজিস্ট্রেশন হচ্ছে...';
+  try{
+    const existing = await db.collection('customers').doc(phone).get();
+    if(existing.exists){
+      errEl.innerText = 'এই ফোন নম্বর দিয়ে আগে থেকেই রেজিস্ট্রেশন করা আছে, লগইন করুন';
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.innerText = 'রেজিস্ট্রেশন করুন';
+      return;
+    }
+    await db.collection('customers').doc(phone).set({
+      name, phone, address, password,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    errEl.style.display = 'none';
+    setSession({ name, phone, address });
+    updateAccountUI();
+    document.getElementById('accountOverlay').classList.remove('show');
+  }catch(err){
+    errEl.innerText = 'সমস্যা হয়েছে: ' + err.message;
+    errEl.style.display = 'block';
+  }
+  btn.disabled = false; btn.innerText = 'রেজিস্ট্রেশন করুন';
+});
+
+document.getElementById('loginSubmitBtn').addEventListener('click', async ()=>{
+  const phone = document.getElementById('loginPhone').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+
+  if(!phone || !password){
+    errEl.innerText = 'ফোন নম্বর ও পাসওয়ার্ড দিন';
+    errEl.style.display = 'block';
+    return;
+  }
+  const btn = document.getElementById('loginSubmitBtn');
+  btn.disabled = true; btn.innerText = 'লগইন হচ্ছে...';
+  try{
+    const doc = await db.collection('customers').doc(phone).get();
+    if(!doc.exists || doc.data().password !== password){
+      errEl.innerText = 'ফোন নম্বর বা পাসওয়ার্ড ভুল';
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.innerText = 'লগইন করুন';
+      return;
+    }
+    errEl.style.display = 'none';
+    const data = doc.data();
+    setSession({ name: data.name, phone: data.phone, address: data.address });
+    updateAccountUI();
+    document.getElementById('accountOverlay').classList.remove('show');
+  }catch(err){
+    errEl.innerText = 'সমস্যা হয়েছে: ' + err.message;
+    errEl.style.display = 'block';
+  }
+  btn.disabled = false; btn.innerText = 'লগইন করুন';
+});
+
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  clearSession();
+  updateAccountUI();
+  document.getElementById('accountOverlay').classList.remove('show');
+});
+
+document.getElementById('viewOrdersBtn').addEventListener('click', async ()=>{
+  const session = getSession();
+  if(!session) return;
+  document.getElementById('accountOverlay').classList.remove('show');
+  const resultsEl = document.getElementById('myOrdersResults');
+  resultsEl.innerHTML = `<div class="empty-note" style="padding:20px; text-align:center; color:var(--ink-soft);">লোড হচ্ছে...</div>`;
+  document.getElementById('orderHistoryOverlay').classList.add('show');
+
+  try{
+    const snapshot = await db.collection('orders').where('customerPhone','==', session.phone).get();
+    let myOrders = snapshot.docs.map(doc=>({ ...doc.data(), id: doc.id }));
+    myOrders.sort((a,b)=>{
+      const ta = a.createdAt ? a.createdAt.seconds : 0;
+      const tb = b.createdAt ? b.createdAt.seconds : 0;
+      return tb - ta;
+    });
+    if(myOrders.length === 0){
+      resultsEl.innerHTML = `<div style="padding:20px; text-align:center; color:var(--ink-soft);">এখনো কোনো অর্ডার নেই</div>`;
+      return;
+    }
+    resultsEl.innerHTML = myOrders.map(o=>{
+      const date = o.createdAt ? new Date(o.createdAt.seconds*1000).toLocaleDateString('bn-BD') : '';
+      const itemsText = o.items.map(i=> `${i.productName} (${i.displayQty||''})`).join(', ');
+      return `
+        <div style="border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px;">
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink-soft); margin-bottom:4px;">
+            <span>#${o.id.slice(-6).toUpperCase()}</span><span>${date}</span>
+          </div>
+          <div style="font-size:13px; margin-bottom:6px;">${itemsText}</div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:700; color:var(--green-deep);">৳${o.total}</span>
+            <span class="status-pill" style="background:var(--paper-2); color:var(--ink); border:none; font-size:11px;">${o.status}</span>
+          </div>
+          <button class="weight-add-btn" style="width:100%; margin-top:8px;" onclick='reorder(${JSON.stringify(o.items).replace(/'/g,"&apos;")})'>🔁 আবার অর্ডার করুন</button>
+        </div>
+      `;
+    }).join('');
+  }catch(err){
+    resultsEl.innerHTML = `<div style="padding:20px; text-align:center; color:var(--brick);">লোড করতে সমস্যা হয়েছে: ${err.message}</div>`;
+  }
+});
+
+function reorder(items){
+  let skipped = [];
+  items.forEach(i=>{
+    const p = products.find(x=>x.id===i.productId);
+    if(!p || p.status !== 'active' || p.price <= 0 || p.stock <= 0){
+      skipped.push(i.productName);
+      return;
+    }
+    const maxQty = isCountUnit(p.saleUnit) ? p.stock : p.stock*1000;
+    const qty = Math.min(i.qty, maxQty);
+    state[p.id] = { qty, unit: p.saleUnit };
+  });
+  document.getElementById('orderHistoryOverlay').classList.remove('show');
+  render();
+  if(skipped.length > 0){
+    alert('এই পণ্যগুলো এখন পাওয়া যাচ্ছে না তাই বাদ দেওয়া হয়েছে: ' + skipped.join(', '));
+  }
+  openSheet();
+}
+
+// prefill checkout form if logged in
+function prefillFromSession(){
+  const session = getSession();
+  if(!session) return;
+  document.getElementById('custName').value = session.name;
+  document.getElementById('custAddress').value = session.address || '';
+  document.getElementById('custPhone').value = session.phone;
+}
+
 loadProducts();
 </script>
 </body>
